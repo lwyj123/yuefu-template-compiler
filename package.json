@@ -25,20 +25,25 @@
     "release": "standard-version",
     "prepare": "gulp build:prod",
     "publish": "npm run docs:publish && node scripts/publish.js",
-    "examples": "npm run build && node ./examples/examples.js"
+    "examples": "npm run build && node ./examples/examples.js",
+    "test": "jest --config .jest.js"
   },
   "engines": {
     "node": ">=5.10"
   },
   "dependencies": {
     "bowser": "^1.8.1",
+    "he": "^1.1.1",
     "tslib": "^1.9.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.0.0",
     "@commitlint/config-conventional": "^7.0.1",
+    "@types/jasmine": "^2.8.8",
+    "@types/jest": "^23.3.1",
     "@types/node": "^10.5.2",
     "@types/sinon": "^5.0.1",
+    "babel-jest": "^23.4.2",
     "browserify": "^14.5.0",
     "dotenv": "^4.0.0",
     "envify": "^4.1.0",
@@ -50,10 +55,12 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-typescript": "^4.0.2",
     "gulp-uglify": "^3.0.0",
+    "jest": "^23.5.0",
     "jsdom": "11.11.0",
     "jsdom-global": "3.0.2",
     "standard-version": "^4.4.0",
     "trash-cli": "^1.4.0",
+    "ts-jest": "^23.1.4",
     "tslint": "^5.11.0",
     "tslint-config-semistandard": "^7.0.0",
     "typedoc": "^0.11.1",
