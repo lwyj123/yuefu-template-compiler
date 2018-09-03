@@ -1,17 +1,8 @@
 const gulp = require('gulp');
-// const path = require('path');
-// const fs = require('fs');
-// const sourcemaps = require('gulp-sourcemaps');
 const ts = require('gulp-typescript');
 const replace = require('gulp-replace');
-// const uglifyEs = require('uglify-es');
-// const composer = require('gulp-uglify/composer');
 const del = require('del');
 const version = require('../package.json').version;
-// const uglify = composer(uglifyEs);
-// const rename = require('gulp-rename');
-
-// const debug = require('gulp-debug');
 
 gulp.task('build', ['build:typescript']);
 
