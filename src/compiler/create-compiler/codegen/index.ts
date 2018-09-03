@@ -79,10 +79,10 @@ export function genElement (el: ASTElement, state: CodegenState): string {
       const data = el.plain ? undefined : genData(el, state);
 
       const children = el.inlineTemplate ? null : genChildren(el, state, true);
-      code = `_c('${el.tag}'${
-        data ? `,${data}` : '' // data
-      }${
-        children ? `,${children}` : '' // children
+      code = `_c('${el.tag}',${
+        data ? `${data}` : 'null' // data
+      },${
+        children ? `${children}` : 'null' // children
       })`;
     }
     // module transforms
@@ -463,8 +463,8 @@ function genComponent (
   state: CodegenState
 ): string {
   const children = el.inlineTemplate ? null : genChildren(el, state, true);
-  return `_c(${componentName},${genData(el, state)}${
-    children ? `,${children}` : ''
+  return `_c(${componentName},${genData(el, state)},${
+    children ? `${children}` : 'null'
   })`;
 }
 
