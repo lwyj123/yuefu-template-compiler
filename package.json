@@ -1,6 +1,6 @@
 {
   "name": "yuefu-template-compiler",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "build/main/index.js",
   "browser": "build/browser/index.esm.js",
