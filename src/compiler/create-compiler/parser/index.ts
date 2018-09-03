@@ -1,5 +1,3 @@
-/* @flow */
-
 import * as he from 'he';
 import { parseHTML } from './html-parser';
 import { parseText } from './text-parser';
