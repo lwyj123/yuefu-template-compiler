@@ -363,7 +363,7 @@ function processIfConditions (el, parent) {
   }
 }
 
-function findPrevElement (children: Array<any>): ASTElement | void {
+function findPrevElement (children: Array<any>): ASTElement | null {
   let i = children.length;
   while (i--) {
     if (children[i].type === 1) {
@@ -509,7 +509,7 @@ function checkInFor (el: ASTElement): boolean {
   return false;
 }
 
-function parseModifiers (name: string): Object | void {
+function parseModifiers (name: string): Object | null {
   const match = name.match(modifierRE);
   if (match) {
     const ret = {};

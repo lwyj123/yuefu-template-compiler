@@ -46,7 +46,7 @@ export type CodegenResult = {
 };
 
 export function generate (
-  ast: ASTElement | void,
+  ast: ASTElement | null,
   options: CompilerOptions
 ): CodegenResult {
   const state = new CodegenState(options);
@@ -368,7 +368,7 @@ export function genChildren (
   checkSkip?: boolean,
   altGenElement?: Function,
   altGenNode?: Function
-): string | void {
+): string | null {
   const children = el.children;
   if (children.length) {
     const el: any = children[0];

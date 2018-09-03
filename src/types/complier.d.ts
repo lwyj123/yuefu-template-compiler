@@ -2,7 +2,7 @@ declare type CompilerOptions = {
   warn?: Function; // allow customizing warning in different environments; e.g. node
   modules?: Array<ModuleOptions>; // platform specific modules; e.g. style; class
   directives?: { [key: string]: Function }; // platform specific directives
-  staticKeys?: string; // a list of AST properties to be considered static; for optimization
+  staticKeys?: string[]; // a list of AST properties to be considered static; for optimization
   preserveWhitespace?: boolean; // preserve whitespace between elements?
   optimize?: boolean; // optimize static content?
 
@@ -33,13 +33,13 @@ declare type CompiledResult = {
 declare type ModuleOptions = {
   // transform an AST node before any attributes are processed
   // returning an ASTElement from pre/transforms replaces the element
-  preTransformNode: (el: ASTElement) => ASTElement;
+  preTransformNode?: (el: ASTElement, options: ModuleOptions) => ASTElement | void;
   // transform an AST node after built-ins like v-if, v-for are processed
-  transformNode: (el: ASTElement) => ASTElement;
+  transformNode?: (el: ASTElement, options: ModuleOptions) => ASTElement | void;
   // transform an AST node after its children have been processed
   // cannot return replacement in postTransform because tree is already finalized
-  postTransformNode: (el: ASTElement) => void;
-  genData: (el: ASTElement) => string; // generate extra data string for an element
+  postTransformNode?: (el: ASTElement, options: ModuleOptions) => ASTElement | void;
+  genData?: (el: ASTElement) => string; // generate extra data string for an element
   transformCode?: (el: ASTElement, code: string) => string; // further transform generated code for an element
   staticKeys?: Array<string>; // AST properties to be considered static
 };
