@@ -20,8 +20,7 @@ function genData (el: ASTElement): string {
     data += `staticClass:${el.staticClass},`;
   }
   if (el.classBinding) {
-    // TODO: 这里也hack了一下
-    data += `class:'${el.classBinding}',`;
+    data += `class:${el.classBinding},`;
   }
   return data;
 }

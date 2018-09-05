@@ -36,8 +36,7 @@ export function parseText (
     }
     // tag token
     const exp = match[1].trim();
-    // TODO: 这里为了获取exp的名字加了两个'，后面参考vue的实现？
-    tokens.push(`_s('${exp}')`);
+    tokens.push(`_s(${exp})`);
     rawTokens.push({ '@binding': exp });
     lastIndex = index + match[0].length;
 
