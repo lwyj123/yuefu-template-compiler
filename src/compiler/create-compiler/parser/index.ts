@@ -479,18 +479,6 @@ function processAttrs (el) {
         }
       }
     } else {
-      // literal attribute
-      if (process.env.NODE_ENV !== 'production') {
-        const res = parseText(value, delimiters);
-        if (res) {
-          warn(
-            `${name}="${value}": ` +
-            'Interpolation inside attributes has been removed. ' +
-            'Use v-bind or the colon shorthand instead. For example, ' +
-            'instead of <div id="{{ val }}">, use <div :id="val">.'
-          );
-        }
-      }
       addAttr(el, name, JSON.stringify(value));
     }
   }

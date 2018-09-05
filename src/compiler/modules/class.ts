@@ -1,24 +1,10 @@
-import { parseText } from '../create-compiler/parser/text-parser';
 import {
   getAndRemoveAttr,
   getBindingAttr,
-  baseWarn
 } from '../helpers';
 
 function transformNode (el: ASTElement, options: CompilerOptions) {
-  const warn = options.warn || baseWarn;
   const staticClass = getAndRemoveAttr(el, 'class');
-  if (process.env.NODE_ENV !== 'production' && staticClass) {
-    const res = parseText(staticClass, options.delimiters);
-    if (res) {
-      warn(
-        `class="${staticClass}": ` +
-        'Interpolation inside attributes has been removed. ' +
-        'Use v-bind or the colon shorthand instead. For example, ' +
-        'instead of <div class="{{ val }}">, use <div :class="val">.'
-      );
-    }
-  }
   if (staticClass) {
     el.staticClass = JSON.stringify(staticClass);
   }
@@ -34,7 +20,8 @@ function genData (el: ASTElement): string {
     data += `staticClass:${el.staticClass},`;
   }
   if (el.classBinding) {
-    data += `class:${el.classBinding},`;
+    // TODO: 这里也hack了一下
+    data += `class:'${el.classBinding}',`;
   }
   return data;
 }
