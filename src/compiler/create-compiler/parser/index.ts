@@ -1,4 +1,4 @@
-import * as he from 'he';
+// import * as he from 'he';
 import { parseHTML } from './html-parser';
 import { parseText } from './text-parser';
 import { genAssignmentCode } from '../directives/model';
@@ -208,10 +208,10 @@ export function parse (
         return;
       }
       const children = currentParent.children;
-      text = inPre || text.trim()
-        ? isTextTag(currentParent) ? text : he.decode(text)
-        // only preserve whitespace if its not right after a starting tag
-        : preserveWhitespace && children.length ? ' ' : '';
+      // text = inPre || text.trim()
+      //   ? isTextTag(currentParent) ? text : he.decode(text)
+      //   // only preserve whitespace if its not right after a starting tag
+      //   : preserveWhitespace && children.length ? ' ' : '';
       if (text) {
         let res = parseText(text, delimiters);
         if (!inVPre && text !== ' ' && res) {
